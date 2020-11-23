@@ -141,18 +141,36 @@
 
 
 
-    var a = () => {
-        return 1;
+    // var a = () => {
+    //     return 1;
+    // }
+
+    // function b() {
+    //     return 2;
+    // }
+
+    // console.log(a.prototype);  // undefined
+    // console.log(b.prototype);   // {constructor: ƒ}
+
+
+
+    // this指向
+
+    var a = 100
+
+    var obj = {
+        as: {
+            a: 200,
+            q: function () {
+                console.log(this)
+            },
+            w: () => {
+                // a: () => {
+                console.log(this)
+                // }
+            }
+        }
     }
-
-    function b() {
-        return 2;
-    }
-
-    console.log(a.prototype);  // undefined
-    console.log(b.prototype);   // {constructor: ƒ}
-
-
-
-
+    obj.as.q()
+    obj.as.w()
 </script>
