@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+
+    // async函数的基本用法
+    let asyncFn = async function () {
+        return 1
+    }
+    console.log(asyncFn())  //返回一个promise对象
+
+    function dice() {
+        return new Promise((resolve, reject) => {
+            let sino = parseInt(Math.random() * 6 + 1)
+            setTimeout(() => {
+                resolve(sino)
+            }, 1000)
+        })
+    }
+    // 异步使用方法
+    async function text() {
+        let num = await dice() // await 关键字后面调用摇色子方法，执行完毕后进行变量赋值
+        console.log("你摇出来的是" + num)
+    }
+    text()
+
+</script>

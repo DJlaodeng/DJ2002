@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // 构造函数名大写（非强制，但这么写有助于区分构造函数和普通函数）
+    // function Person(name, age) {
+    //     this.name = name;
+    //     this.age = age;
+    // }
+    // Person.prototype.say = function () {
+    //     return "我的名字叫" + this.name + "今年" + this.age + "岁了";
+    // }
+    // var obj = new Person("小灰灰", 18);//通过构造函数创建对象，必须使用new 运算符
+    // console.log(obj.say());//我的名字叫小灰灰今年18岁了
+
+
+
+    // var arr = []
+    // console.log(typeof arr)
+    // var str = ""
+    // console.log(typeof str)
+    // function fn() { }
+    // console.log(typeof fn)
+
+
+
+    // class Person {   //通过class定义了一个名字为Person的类
+    //     constructor(name, age) {  //constructor是一个构造方法，用来接收参数
+    //         this.name = name
+    //         this.age = age
+    //     }
+    //     say() {   //这里是一个类的方法，注意不要加function
+    //         return "我的名字叫" + this.name + "今年" + this.age + "岁了"
+    //     }
+    // }
+    // var obj = new Person("小灰灰", "18")
+    // console.log(obj.say())   //我的名字叫小灰灰今年18岁了
+
+
+
+    // console.log(typeof Person);//function
+    // console.log(Person === Person.prototype.constructor);//true
+
+
+
+    // Person.prototype.say = function () {//定义与类中相同名字的方法。成功实现了覆盖！
+    //     return "我是来证明的，你叫" + this.name + "今年" + this.age + "岁了";
+    // }
+    // var obj = new Person("小灰灰", 18);
+    // console.log(obj.say());//我是来证明的，你叫小灰灰今年18岁了
+
+
+
+    // Person.prototype.addFn = function () {
+    //     return "我是通过prototype新增加的方法,名字叫addFn";
+    // }
+    // var obj = new Person("小灰灰", 18);
+    // console.log(obj.addFn());//我是通过prototype新增加的方法,名字叫addFn
+
+
+
+    // Object.assign(Person.prototype, {
+    //     getName: function () {
+    //         return this.name;
+    //     },
+    //     getAge: function () {
+    //         return this.age;
+    //     }
+    // })
+    // var obj = new Person("小灰灰", 18);
+    // console.log(obj.getName());//小灰灰
+    // console.log(obj.getAge());//18
+
+
+
+    // class Con {
+    //     constructor() {
+    //         console.log("好嗨哦，感觉人生已经达到了高潮");//当实例化对象时该行代码会执行。
+    //     }
+    // }
+    // var obj = new Con();
+
+
+
+    // class Disk {
+    //     constructor() {
+    //         this.aa = "初入编程，难免眼高手低，心高气傲";
+    //     }
+    // }
+    // class Con {
+    //     constructor() {
+    //         return new Disk();// 这里没有用this哦，直接返回一个全新的对象
+    //     }
+    // }
+    // var obj = new Con();
+    // console.log(obj.aa);//初入编程，难免眼高手低，心高气傲
+
+
+
+    // class Con {
+    //     constructor(num1, num2) {
+    //         this.num1 = num1;
+    //         this.num2 = num2;
+    //     }
+    //     sum() {
+    //         return num1 + num2;
+    //     }
+    // }
+    // var con = new Con(12, 18);
+    // console.log(con.hasOwnProperty("num1"));//true
+    // console.log(con.hasOwnProperty("num2"));//true
+    // console.log(con.hasOwnProperty("sum"));//false
+    // console.log("num1" in con);//true
+    // console.log("num2" in con);//true
+    // console.log("sum" in con);//true
+    // console.log("say" in con);//false
+
+
+
+    // class Con {
+    //     constructor(num1, num2) {
+    //         this.num1 = num1;
+    //         this.num2 = num2;
+    //     }
+    //     sum() {
+    //         return num1 + num2;
+    //     }
+    // }
+    // //con1与con2都是Con的实例。它们的__proto__都指向Con的prototype
+    // var con1 = new Con(12, 88);
+    // var con2 = new Con(40, 60);
+    // console.log(con1.__proto__ === con2.__proto__);//true
+
+
+
+    // class Con {
+    //     constructor(num1, num2) {
+    //         this.num1 = num1;
+    //         this.num2 = num2;
+    //     }
+    //     sum() {
+    //         return num1 + num2;
+    //     }
+    // }
+    // var con1 = new Con(12, 88);
+    // var con2 = new Con(40, 60);
+    // con1.__proto__.sub = function () {
+    //     return this.num2 - this.num1;
+    // }
+    // console.log(con1.sub());//76
+    // console.log(con2.sub());//20
+
+
+
+    // //ES5可以先使用再定义,存在变量提升
+    // new A();
+    // function A() { }
+    // //ES6不能先使用再定义,不存在变量提升 会报错
+    // new B();//B is not defined
+    // class B { }
+
+
+
+    // function Persion(name, age) {
+    //     this.name = name;
+    //     this.age = age;
+    //     this.say = function () {
+    //         console.log(`${this.name} ${this.age}`);
+    //     }
+    // }
+    // Persion.prototype.test = function () {
+    //     console.log("我是原型上的方法");
+    // }
+    // //子类
+    // function Women() {
+    //     this.sex = '女'
+    // }
+    // Women.prototype = new Persion('桃子', 18);//父类的实例作为子类的原型
+
+    // var one = new Women('汤姆', 20);
+    // one.say();//桃子 18  子类实例，不能向父类构造函数中传参数
+    // one.test();//输出-我是原型上的方法(说明调用了原型的方法)
+
+
+
+    // //父类
+    // function Persion(name, age) {
+    //     this.name = name;
+    //     this.age = age;
+    //     this.say = function () {
+    //         console.log(`${this.name} ${this.age}`);
+    //     }
+    // }
+    // Persion.prototype.test = function () {
+    //     console.log("我是原型上的方法");
+    // }
+    // //子类
+    // function Women() {
+    //     //在子类内,使用call()调用父类方法,并将父类的this修改为子类的this.相当于是把父类的实例属性复制了一份放到子类的函数内.
+    //     Persion.call(this);
+    //     this.name = "child";
+    //     this.age = 18;
+    // }
+    // var one = new Women();
+    // one.say();//child 18
+    // one.test();// 报错 不能继承原型上的方法
+
+
+
+    // //解决方法，组合是继承，把子类的原型变成父类的实例
+    // function Persion(name, age) {
+    //     this.name = name;
+    //     this.age = age;
+    //     this.say = function () {
+    //         console.log(`${this.name} ${this.age}`);   //桃子 20(成功输出的内容)
+    //     }
+    // }
+    // Persion.prototype.test = function () {
+    //     console.log("我是原型上的方法");   // 我是原型上的方法(成功输出的内容)
+    // }
+    // //子类
+    // function Women(name, age, sex) {
+    //     Persion.call(this, name, age);//实现继承的一种方式
+    //     this.sex = sex
+    // }
+    // Women.prototype = new Persion();//把Women的原型变成Persion的实例（因为Women的实例能够访问到Women原型上的方法）
+
+    // var c = new Women('桃子', 20, '女');
+    // c.say(); //成功继承父类实例的方法
+    // c.test();//成功继承原型上的方法
+
+
+
+
+
+
+
+    //class 相当于es5中构造函数
+    //class 中定义方法时，前后不能加function，全部定义在class的protopyte属性中
+    //class 中定义的所有方法是不可枚举的
+    //class 中只能定义方法，不能定义对象，变量等
+    //class 和方法内默认都是严格模式
+    //es5 中constructor为隐式属性
+
+    // //父类
+    // class People {
+    //     constructor(name = '小灰灰', age = '25') {
+    //         this.name = name;
+    //         this.age = age;
+    //     }
+    //     eat() {
+    //         console.log(`${this.name} ${this.age}`)  // 桃子 27 
+    //     }
+    // }
+    // //子类 通过extends 继承父类
+    // class Woman extends People {
+    //     constructor(name = '小不点', age = '27') {
+    //         //继承父类属性
+    //         super(name, age);
+    //     }
+    //     eat() {
+    //         //继承父类方法
+    //         super.eat()
+    //     }
+    // }
+    // let wonmanObj = new Woman('桃子');
+    // wonmanObj.eat();
+
+
+
+
+
+    
+
+
+</script>
